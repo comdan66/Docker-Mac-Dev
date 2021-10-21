@@ -6,7 +6,7 @@ services:
     container_name: oa-mysql
     build: ./mysql
     ports:
-      - "33060:3306"
+      - 3306:3306
     volumes:
       - ./mysql/data:/var/lib/mysql
     environment:
@@ -16,7 +16,7 @@ services:
     container_name: oa-redis
     build: ./redis
     ports:
-      - "6379:6379"
+      - 6379:6379
     volumes:
       - ./redis/data:/data
   
@@ -28,12 +28,12 @@ services:
       - mysql
       - redis
     links:
-      - "mysql:mysql"
-      - "redis:redis"
+      - mysql:mysql
+      - redis:redis
     ports:
-      - "8080:80"
+      - 80:80
     volumes:
-      - ./www:/var/www
+      - ~/www:/var/www
       - ./php/config:/etc/apache2/sites-enabled
   
   # jenkins:
