@@ -20,9 +20,9 @@ services:
     volumes:
       - ./redis/data:/data
   
-  php:
-    container_name: oa-php
-    build: ./php
+  php73:
+    container_name: oa-php73
+    build: ./php73
     working_dir: /var/www
     depends_on:
       - mysql
@@ -34,7 +34,7 @@ services:
       - 80:80
     volumes:
       - ~/www:/var/www
-      - ./php/config:/etc/apache2/sites-enabled
+      - ./php73/config:/etc/apache2/sites-enabled
   
   # jenkins:
   #   container_name: oa-jenkins
